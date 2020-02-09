@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.Infra.Data.Context;
+using CleanArch.IOC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,8 @@ namespace CleanArchCqrs.Api
             services.AddDbContext<UniversityDBContext>(options => {
                 options.UseSqlServer(@"Server=DESKTOP-7RUDNLS\SQLEXPRESS; Database=UniversityDb; Trusted_Connection=True; MultipleActiveResultSets=true");
             });
+
+            DependencyContainer.RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
